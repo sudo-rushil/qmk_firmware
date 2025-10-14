@@ -1,2 +1,7 @@
+# Bootloader selection
+BOOTLOADER = rp2040
+
 TRI_LAYER_ENABLE = yes
 NKRO_ENABLE = yes
+
+RGB_MATRIX_DRIVER = ws2812

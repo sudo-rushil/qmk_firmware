@@ -13,3 +13,6 @@
 #define I2C_DRIVER I2CD2
 #define I2C1_SDA_PIN GP10
 #define I2C1_SCL_PIN GP11
+
+// Custom config
+#define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
