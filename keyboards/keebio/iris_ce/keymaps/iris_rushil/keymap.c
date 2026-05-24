@@ -9,6 +9,20 @@ enum custom_layers {
      _RAISE
 };
 
+enum custom_keycodes {
+    // Apple Globe
+    AP_GLOB = SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case AP_GLOB:
+            host_consumer_send(record->event.pressed ? AC_NEXT_KEYBOARD_LAYOUT_SELECT : 0);
+            return false;
+    }
+    return true;
+}
+
 // Custom definitions
 
 #define KC_RSET RSFT_T(KC_ENT) // right shift when held, escape when tapped.
@@ -53,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, NK_OFF,                             _______, KC_P1,   KC_P2,   KC_P3,   _______, KC_VOLU,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______, _______,          _______, _______, KC_P0,   _______, _______, _______, KC_VOLD,
+     AP_GLOB, _______, _______, _______, _______, _______, _______,          _______, _______, KC_P0,   _______, _______, _______, KC_VOLD,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   _______,  _______, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
